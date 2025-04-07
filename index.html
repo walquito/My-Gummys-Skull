@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaHorizons</title>
+  <style>
+    /* Estilo general */
+    html {
+      overflow-x: hidden; /* Ocultar desbordamiento horizontal */
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #0d0d0d; /* Negro profundo */
+      color: #fff;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Cursor personalizado */
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 2px solid #ff4081; /* Rosa neón */
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
+    }
+
+    /* Navegación lateral */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 80px;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .sidebar a {
+      color: #ff4081;
+      text-decoration: none;
+      margin: 20px 0;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      transform: scale(1.2);
+      color: #ffd700; /* Amarillo brillante */
+    }
+
+    /* Contenedor principal */
+    .main-container {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      width: 400vw; /* 4 secciones horizontales */
+    }
+
+    .section {
+      flex: 0 0 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      transition: background 1s ease;
+    }
+
+    .section:nth-child(1) {
+      background: linear-gradient(135deg, #ff4081, #9c27b0); /* Rosa a púrpura */
+    }
+
+    .section:nth-child(2) {
+      background: linear-gradient(135deg, #81d4fa, #00f5d4); /* Azul a verde */
+    }
+
+    .section:nth-child(3) {
+      background: linear-gradient(135deg, #ffd700, #ff4081); /* Amarillo a rosa */
+    }
+
+    .section:nth-child(4) {
+      background: linear-gradient(135deg, #9c27b0, #121212); /* Púrpura a negro */
+    }
+
+    .section h1 {
+      font-size: 4rem;
+      color: #fff;
+      text-transform: uppercase;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .section p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-top: 20px;
+      text-align: center;
+      max-width: 600px;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Botones */
+    .btn {
+      margin-top: 30px;
+      padding: 15px 40px;
+      font-size: 1rem;
+      color: #0d0d0d;
+      background: #ffd700; /* Amarillo brillante */
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.5);
+      background: linear-gradient(135deg, #ffd700, #ff4081); /* Degradado */
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: #ccc;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ff4081;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+  <!-- Cursor personalizado -->
+  <div class="custom-cursor"></div>
+
+  <!-- Navegación lateral -->
+  <div class="sidebar">
+    <a href="#section1">Inicio</a>
+    <a href="#section2">Nosotros</a>
+    <a href="#section3">Servicios</a>
+    <a href="#section4">Contacto</a>
+  </div>
+
+  <!-- Contenedor principal -->
+  <div class="main-container">
+    <div class="section" id="section1">
+      <div>
+        <h1>Bienvenido a NovaHorizons</h1>
+        <p>Explora un mundo de diseño, tecnología y creatividad en movimiento.</p>
+        <button class="btn">Descubrir Más</button>
+      </div>
+    </div>
+    <div class="section" id="section2">
+      <div>
+        <h1>Sobre Nosotros</h1>
+        <p>Somos un equipo apasionado por crear experiencias digitales únicas y memorables.</p>
+      </div>
+    </div>
+    <div class="section" id="section3">
+      <div>
+        <h1>Servicios</h1>
+        <p>Ofrecemos soluciones innovadoras en diseño, desarrollo y branding digital.</p>
+      </div>
+    </div>
+    <div class="section" id="section4">
+      <div>
+        <h1>Contacto</h1>
+        <p>¿Listo para transformar tu visión en realidad? Contáctanos hoy mismo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 NovaHorizons. Todos los derechos reservados. <a href="#">Política de Privacidad</a></p>
+  </footer>
+
+  <script>
+    // Cursor personalizado
+    const cursor = document.querySelector('.custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = `${e.pageX}px`;
+      cursor.style.top = `${e.pageY}px`;
+    });
+
+    document.querySelectorAll('button, a').forEach((el) => {
+      el.addEventListener('mouseover', () => {
+        cursor.style.width = '30px';
+        cursor.style.height = '30px';
+      });
+      el.addEventListener('mouseout', () => {
+        cursor.style.width = '20px';
+        cursor.style.height = '20px';
+      });
+    });
+  </script>
+</body>
+</html>
+<!-- Pantalla de carga cinematográfica -->
+<div id="loading-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0d0d0d; z-index: 10000; display: flex; justify-content: center; align-items: center; flex-direction: column; color: #fff; font-family: 'Montserrat', sans-serif;">
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <div style="width: 50px; height: 50px; border: 5px solid rgba(255, 255, 255, 0.3); border-top: 5px solid #ff4081; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+  </div>
+  <h1 style="margin-top: 20px; font-size: 2rem; text-transform: uppercase; animation: fadeInText 2s ease-in-out;">Cargando...</h1>
+</div>
+
+<style>
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes fadeInText {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  // Simulación de pantalla de carga
+  window.addEventListener('load', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    setTimeout(() => {
+      loadingScreen.style.opacity = '0';
+      loadingScreen.style.transition = 'opacity 1s ease-in-out';
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 1000);
+    }, 3000); // Duración de la pantalla de carga (3 segundos)
+  });
+</script>
+<style>
+  .sidebar {
+    display: none;
+  }
+</style>
+<style>
+  .custom-cursor {
+    display: none;
+  }
+</style>
+<script>
+  // Eliminar el contenido del footer
+  document.addEventListener('DOMContentLoaded', () => {
+    const footer = document.querySelector('footer');
+    if (footer) {
+      footer.innerHTML = '';
+    }
+  });
+</script>
+<!-- Barra de navegación superior -->
+<nav style="position: fixed; top: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.9); color: #fff; display: flex; justify-content: space-around; align-items: center; padding: 10px 0; z-index: 1000; font-family: 'Montserrat', sans-serif; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);">
+  <a href="#inicio" style="color: #ff4081; text-decoration: none; font-size: 1.2rem; transition: color 0.3s ease;">Inicio</a>
+  <a href="#sobre-nosotros" style="color: #ff4081; text-decoration: none; font-size: 1.2rem; transition: color 0.3s ease;">Sobre Nosotros</a>
+  <a href="#productos" style="color: #ff4081; text-decoration: none; font-size: 1.2rem; transition: color 0.3s ease;">Productos</a>
+  <a href="#localizacion" style="color: #ff4081; text-decoration: none; font-size: 1.2rem; transition: color 0.3s ease;">Localización</a>
+</nav>
+
+<!-- Sección Inicio -->
+<section id="inicio" style="height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #ff4081, #9c27b0); color: #fff; text-align: center; padding: 20px;">
+  <div>
+    <h1 style="font-size: 3rem; text-transform: uppercase;">Bienvenido</h1>
+    <p style="font-size: 1.2rem; margin-top: 10px;">Explora nuestra página y descubre todo lo que tenemos para ofrecerte.</p>
+  </div>
+</section>
+
+<!-- Sección Sobre Nosotros -->
+<section id="sobre-nosotros" style="height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #81d4fa, #00f5d4); color: #fff; text-align: center; padding: 20px;">
+  <div>
+    <h1 style="font-size: 3rem; text-transform: uppercase;">Sobre Nosotros</h1>
+    <p style="font-size: 1.2rem; margin-top: 10px;">Somos un equipo apasionado por ofrecer productos y servicios de alta calidad.</p>
+  </div>
+</section>
+
+<!-- Sección Productos -->
+<section id="productos" style="height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #ffd700, #ff4081); color: #fff; text-align: center; padding: 20px;">
+  <div>
+    <h1 style="font-size: 3rem; text-transform: uppercase;">Nuestros Productos</h1>
+    <p style="font-size: 1.2rem; margin-top: 10px;">Descubre nuestra amplia gama de productos diseñados para ti.</p>
+  </div>
+</section>
+
+<!-- Sección Localización -->
+<section id="localizacion" style="height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #9c27b0, #121212); color: #fff; text-align: center; padding: 20px;">
+  <div>
+    <h1 style="font-size: 3rem; text-transform: uppercase;">Nuestra Localización</h1>
+    <p style="font-size: 1.2rem; margin-top: 10px;">Encuéntranos en nuestra oficina principal o contáctanos en línea.</p>
+  </div>
+</section>
+<script>
+  // Animaciones al entrar en cada sección
+  const sections = document.querySelectorAll('section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.filter = 'blur(0)';
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'scale(1)';
+      } else {
+        entry.target.style.filter = 'blur(5px)';
+        entry.target.style.opacity = '0.5';
+        entry.target.style.transform = 'scale(0.95)';
+      }
+    });
+  }, {
+    threshold: 0.5, // Detectar cuando el 50% de la sección está visible
+  });
+
+  sections.forEach((section) => {
+    section.style.transition = 'filter 0.8s ease, opacity 0.8s ease, transform 0.8s ease';
+    section.style.filter = 'blur(5px)';
+    section.style.opacity = '0.5';
+    section.style.transform = 'scale(0.95)';
+    observer.observe(section);
+  });
+</script>
+<script>
+  // Efecto de agrandamiento en las letras al hacer clic en una sección
+  document.querySelectorAll('section').forEach((section) => {
+    section.addEventListener('click', (event) => {
+      if (event.target === section) { // Ensure the click is on the section itself
+        const textElements = section.querySelectorAll('h1, p');
+        textElements.forEach((el) => {
+          el.style.transition = 'transform 0.5s ease, color 0.5s ease';
+          el.style.transform = 'scale(1.2)';
+          el.style.color = '#ffd700'; // Cambiar color a amarillo brillante
+
+          // Volver al estado original después de un tiempo
+          setTimeout(() => {
+            el.style.transition = 'transform 0.5s ease, color 0.5s ease'; // Asegurar transición suave
+            el.style.transform = 'scale(1)';
+            el.style.color = ''; // Restaurar color original
+          }, 500);
+        });
+      }
+    });
+  });
+</script></script>
+<script>
+  // Animación al pasar el mouse y al hacer clic en los enlaces de navegación
+  document.querySelectorAll('nav a').forEach((link) => {
+    // Animación al pasar el mouse
+    link.addEventListener('mouseover', () => {
+      link.style.transition = 'transform 0.3s ease, color 0.3s ease';
+      link.style.transform = 'scale(1.2)';
+      link.style.color = '#ffd700'; // Cambiar color a amarillo brillante
+    });
+
+    // Restaurar al salir el mouse
+    link.addEventListener('mouseout', () => {
+      link.style.transform = 'scale(1)';
+      link.style.color = '#ff4081'; // Restaurar color original
+    });
+
+    // Animación al hacer clic
+    link.addEventListener('click', () => {
+      link.style.transition = 'transform 0.2s ease, color 0.2s ease';
+      link.style.transform = 'scale(1.5)';
+      link.style.color = '#fff'; // Asegurar que el color vuelva a blanco
+
+      // Volver al estado original después de un tiempo
+      setTimeout(() => {
+        link.style.transform = 'scale(1.2)';
+        link.style.color = '#fff'; // Restaurar color blanco
+      }, 200);
+    });
+  });
+</script></script>
+<script></script>
+<script>
+  // Cambiar el color de los botones de navegación a blanco
+  document.querySelectorAll('nav a').forEach((link) => {
+    link.style.color = '#fff'; // Cambiar color a blanco
+  });
+</script>
+<script>
+  // Remover el efecto de agrandamiento y cambio de color al hacer clic en las secciones
+  document.querySelectorAll('section').forEach((section) => {
+    section.addEventListener('click', (event) => {
+      event.stopPropagation(); // Evitar cualquier acción adicional
+    });
+  });
+</script></script>
+<script>
+  // Animación al pasar el mouse y al hacer clic en los botones de navegación
+  document.querySelectorAll('nav a').forEach((link) => {
+    // Animación al pasar el mouse
+    link.addEventListener('mouseover', () => {
+      link.style.transition = 'transform 0.3s ease, color 0.3s ease';
+      link.style.transform = 'scale(1.2)';
+      link.style.color = '#ffd700'; // Cambiar color a amarillo brillante
+    });
+
+    // Restaurar al salir el mouse
+    link.addEventListener('mouseout', () => {
+      link.style.transform = 'scale(1)';
+      link.style.color = '#fff'; // Restaurar color original
+    });
+
+    // Animación al hacer clic
+    link.addEventListener('click', () => {
+      link.style.transition = 'transform 0.2s ease, color 0.2s ease';
+      link.style.transform = 'scale(1.5)';
+      link.style.color = '#ff4081'; // Cambiar color a rosa neón
+
+      // Volver al estado original después de un tiempo
+      setTimeout(() => {
+        link.style.transform = 'scale(1.2)';
+        link.style.color = '#ffd700'; // Restaurar color amarillo brillante
+      }, 200);
+    });
+  });
+</script></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+</style>
+<script>
+  // Cambiar la fuente de todas las letras
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.fontFamily = "'Lilita One', cursive"; // Aplicar la fuente personalizada
+  });
+</script>
+<script>
+  // Mover los textos a la parte superior de cada sección
+  document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('section').forEach((section) => {
+        const heading = section.querySelector('h1');
+        if (heading) {
+          heading.style.position = 'static'; // Reset position to default
+          heading.style.margin = '20px 0'; // Add margin for spacing
+          heading.style.transform = 'none'; // Remove transform
+        }
+      });
+    });
+</script>
+<script>
+  // Animación de desplazamiento suave al hacer clic en los enlaces de navegación
+  document.querySelectorAll('nav a').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+      const targetId = link.getAttribute('href').substring(1); // Obtener el ID del destino
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop, // Posición de la sección objetivo
+          behavior: 'smooth', // Desplazamiento suave
+        });
+      }
+    });
+  });
+</script></script>
+<script>
+  // Cambiar el texto "Bienvenido" a "¿Qué Hacemos?"
+  document.addEventListener('DOMContentLoaded', () => {
+    const welcomeHeading = document.querySelector('#inicio h1');
+    if (welcomeHeading) {
+      welcomeHeading.textContent = '¿Qué Hacemos?';
+    }
+  });
+</script></script>
+<script>
+  // Animación de desplazamiento suave al hacer clic en los enlaces de navegación
+  document.querySelectorAll('nav a').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+      const targetId = link.getAttribute('href').substring(1); // Obtener el ID del destino
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        const targetPosition = targetSection.offsetTop; // Posición de la sección objetivo
+        const startPosition = window.pageYOffset; // Posición inicial
+        const distance = targetPosition - startPosition; // Distancia a recorrer
+        const duration = 1000; // Duración de la animación en milisegundos
+        let startTime = null;
+
+        const animation = (currentTime) => {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+          window.scrollTo(0, run);
+          if (timeElapsed < duration) requestAnimationFrame(animation);
+        };
+
+        const easeInOutQuad = (t, b, c, d) => {
+          t /= d / 2;
+          if (t < 1) return (c / 2) * t * t + b;
+          t--;
+          return (-c / 2) * (t * (t - 2) - 1) + b;
+        };
+
+        requestAnimationFrame(animation);
+      }
+    });
+  });
+</script></script>
+<script>
+  // Mover los títulos un poco más abajo en cada sección
+  document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('section').forEach((section) => {
+        const heading = section.querySelector('h1');
+        if (heading) {
+          heading.style.position = 'relative'; // Use relative positioning
+          heading.style.top = '0'; // Reset top position
+          heading.style.left = '0'; // Reset left position
+          heading.style.transform = 'none'; // Remove transformations
+          heading.style.margin = '20px 0'; // Add margin for spacing
+        }
+      });
+    });
+</script>
+<script>
+  // Cambiar el color de fondo de la barra de navegación al hacer scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(0, 0, 0, 0.7)';
+    } else {
+      nav.style.background = 'rgba(0, 0, 0, 0.9)';
+    }
+  });
+</script></script>
+<script></script>
+<script>
+  // Animación de aparición de textos después de la pantalla de carga
+  window.addEventListener('load', () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => {
+      const textElements = section.querySelectorAll('h1, p');
+      textElements.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 1s ease, transform 1s ease';
+      });
+    });
+
+    setTimeout(() => {
+      sections.forEach((section) => {
+        const textElements = section.querySelectorAll('h1, p');
+        textElements.forEach((el, index) => {
+          setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          }, index * 300); // Retraso entre elementos
+        });
+      });
+    }, 4000); // Iniciar después de la pantalla de carga (3s + 1s de transición)
+  });
+</script>
+<script></script>
+<script>
+  // Animación de aparición de textos en la primera plantilla
+  window.addEventListener('load', () => {
+    const firstSection = document.querySelector('#section1');
+    if (firstSection) {
+      const textElements = firstSection.querySelectorAll('h1, p, button');
+      textElements.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 1s ease, transform 1s ease';
+      });
+
+      setTimeout(() => {
+        textElements.forEach((el, index) => {
+          setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          }, index * 300); // Retraso entre elementos
+        });
+      }, 3000); // Iniciar después de la pantalla de carga
+    }
+  });
+</script>
+<script>
+  // Mover los títulos a la parte superior de cada sección
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('section').forEach((section) => {
+      const heading = section.querySelector('h1');
+      if (heading) {
+        heading.style.position = 'absolute'; // Posicionar de forma absoluta
+        heading.style.top = '30%'; // Posicionar cerca de la parte superior
+        heading.style.left = '50%'; // Centrar horizontalmente
+        heading.style.transform = 'translate(-50%, 0)'; // Ajustar para centrar horizontalmente
+        heading.style.margin = '0'; // Eliminar márgenes
+      }
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('section').forEach((section) => {
+      const heading = section.querySelector('h1');
+      if (heading) {
+      heading.style.position = 'absolute'; // Posicionar de forma absoluta
+      heading.style.top = '10%'; // Centrar en la parte superior
+      heading.style.left = '50%'; // Centrar horizontalmente
+      heading.style.transform = 'translateX(-50%)'; // Ajustar para centrar horizontalmente
+      heading.style.margin = '0'; // Eliminar márgenes
+      }
+    });
+    });
+  });
+</script>
+<script></script>
+<script></script>
+<script></script>
+<!-- Botón minimalista con animación -->
+<div style="position: relative; display: inline-block; margin: 20px;"></div>
